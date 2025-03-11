@@ -14,7 +14,7 @@ cd "syncthing/src/github.com/syncthing/syncthing/"
 git fetch
 CURRENT_TAG=$(git describe)
 if [ -z "$LATEST_TAG" ]; then
-    LATEST_TAG=$(git tag --sort=taggerdate | tail -1)
+    LATEST_TAG=$(git tag --sort=taggerdate | grep -v -- '-' | tail -1)
 fi
 
 if [ ${CURRENT_TAG} != ${LATEST_TAG} ]; then
