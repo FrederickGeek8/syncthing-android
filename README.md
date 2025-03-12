@@ -1,6 +1,13 @@
+# Note About This Version
+[The original syncthing-android](https://github.com/syncthing/syncthing-android) had its development discontinued back at the end of 2024. **This fork is a _personal_ fork where I will keep the [syncthing binary submodule](https://github.com/FrederickGeek8/syncthing-android/tree/main/syncthing/src/github.com/syncthing) up to date.** If you consider the original application to be "stable" (which it was for me), then the maintenance required is minimal -- I would encourage you to try it out!
+
+**IMPORTANT:** I am _not_ maintaining this fork for _you_, so there should be no expectation that I will continue to maintain it. I encourage you to not rely on this fork. This is truly a "no liability, no warranty" situation.
+
+Below is the original README.
+
 # Discontinued
 
-This app is discontinued. The last release on Github and F-Droid will happen
+**This app is discontinued.** The last release on Github and F-Droid will happen
 with the December 2024 Syncthing version. Interactions (issues, PRs) are limited
 now, and the entire repo will be archived after the last release. Thus all
 contributions are preserved for any future (re)use. The forum is still open for
