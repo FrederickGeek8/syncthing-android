@@ -64,5 +64,12 @@ You're done! You should now have a version of Syncthing-Android which has it's s
 ### Notes, Gotchas, etc.
 1. **Note 1:** This requires you to have a valid gradle environment. If you are [using Docker for development builds](/docker) (like I), then the `--no-lint` is useful for using my Git identity outside of the repository.
 
-## TODO
-This guide is incomplete! Namely it is missing the instructions to generate the proper signing keys utilized by the GitHub Action.
+## Setting up the GitHub Action (for Building/Signing)
+*This section is very incomplete.*
+
+What I can tell you is that the GitHub Actions require 3 repository secrets defined:
+1. `GNUPG_SIGNING_KEY_BASE64`
+2. `SIGNING_KEYSTORE_JKS_BASE64`
+3. `SIGNING_PASSWORD`
+
+You can find out how to generate these values from other guides for building & signing Android apps in GitHub Actions with `keytool`. This section is incomplete and, for now, will remain incomplete.
