@@ -7,7 +7,7 @@ if ! git diff --exit-code --quiet HEAD; then
     exit 1
 fi
 
-NEW_VERSION_NAME=$1
+NEW_VERSION_NAME=${2:-$1}
 OLD_VERSION_NAME=$(grep "versionName" "app/build.gradle.kts" | awk '{print $3}')
 if [[ -z ${NEW_VERSION_NAME} ]]
 then
@@ -17,12 +17,15 @@ fi
 
 ./scripts/check-version.bash "$NEW_VERSION_NAME" 
 
+if [[ "$1" != "--no-lint" ]]
+then
 echo "
 
 Running Lint
 -----------------------------
 "
 ./gradlew clean lintVitalRelease
+fi
 
 echo "
 
@@ -50,7 +53,7 @@ NEW_VERSION_CODE=$(($OLD_VERSION_CODE + 1))
 sed -i -e "s/versionCode = $OLD_VERSION_CODE/versionCode = $NEW_VERSION_CODE/" "app/build.gradle.kts"
 
 OLD_VERSION_NAME=$(grep "versionName" "app/build.gradle.kts" | awk '{print $3}')
-sed -i -e "s/$OLD_VERSION_NAME/\"$1\"/" "app/build.gradle.kts"
+sed -i -e "s/$OLD_VERSION_NAME/\"$NEW_VERSION_NAME\"/" "app/build.gradle.kts"
 git add "app/build.gradle.kts" $CHANGELOG
 git commit -m "Bumped version to $NEW_VERSION_NAME"
 git tag -a ${NEW_VERSION_NAME} -m "
