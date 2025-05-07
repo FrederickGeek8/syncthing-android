@@ -2,7 +2,7 @@
 
 set -e
 
-if ! git diff-index --exit-code --quiet HEAD; then
+if ! git diff --exit-code --quiet HEAD; then
     echo "Bumping version aka cutting a release must happen on a clean git workspace"
     exit 1
 fi
