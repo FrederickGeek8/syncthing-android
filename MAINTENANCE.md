@@ -21,7 +21,7 @@ In the event that there is a new [syncthing binary release](https://github.com/s
 
 After `cd`'ing to the root of this project in your _local development_ terminal, do:
 
-1. Run `./script/update-syncthing.bash`. _Internally_ [that script](scripts/update-syncthing.bash):
+1. Run `./scripts/update-syncthing.bash`. _Internally_ [that script](scripts/update-syncthing.bash):
    1. Checks for the latest stable _tag_ from the [syncthing release page](https://github.com/syncthing/syncthing/releases)
    2. Updates the [git submodule in `./syncthing/src/github.com/syncthing/syncthing`](/syncthing/src/github.com/syncthing) to point to that latest tag
    3. Creates a new git commit in this repository which says "Updated Syncthing to $LATEST_TAG".
