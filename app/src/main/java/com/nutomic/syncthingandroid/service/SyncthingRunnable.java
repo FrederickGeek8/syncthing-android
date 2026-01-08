@@ -89,7 +89,7 @@ public class SyncthingRunnable implements Runnable {
                 mCommand = new String[]{ mSyncthingBinary.getPath(), "generate" };
                 break;
             case main:
-                mCommand = new String[]{ mSyncthingBinary.getPath(), "serve" "--no-browser" };
+                mCommand = new String[]{ mSyncthingBinary.getPath(), "serve", "--no-browser" };
                 break;
             case resetdatabase:
                 mCommand = new String[]{ mSyncthingBinary.getPath(), "debug", "reset-database" };
