@@ -23,6 +23,14 @@ jobs:
           submodules: true
           fetch-depth: 0
 
+      - name: Cache Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go1.22.7-${{ hashFiles('syncthing/src/github.com/syncthing/syncthing/go.sum') }}
+
       - name: build
         run: |
           git config --system --add safe.directory '*'
