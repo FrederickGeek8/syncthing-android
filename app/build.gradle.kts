@@ -7,7 +7,7 @@ plugins {
 dependencies {
     implementation("eu.chainfire:libsuperuser:1.1.1")
     implementation("com.google.android.material:material:1.8.0")
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.code.gson:gson:2.13.2")
     implementation("org.mindrot:jbcrypt:0.4")
     implementation("com.google.guava:guava:32.1.3-android")
     implementation("com.annimon:stream:1.2.2")
