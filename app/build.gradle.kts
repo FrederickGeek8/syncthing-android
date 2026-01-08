@@ -86,13 +86,6 @@ android {
     }
 }
 
-play {
-    serviceAccountCredentials.set(
-        file(System.getenv("SYNCTHING_RELEASE_PLAY_ACCOUNT_CONFIG_FILE") ?: "keys.json")
-    )
-    track.set("beta")
-}
-
 /**
  * Some languages are not supported by Google Play, so we ignore them.
  */
