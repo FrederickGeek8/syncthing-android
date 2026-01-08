@@ -2,8 +2,6 @@ import org.gradle.configurationcache.extensions.capitalized
 
 plugins {
     id("com.android.application")
-    id("com.github.ben-manes.versions")
-    id("com.github.triplet.play") version "3.7.0"
 }
 
 dependencies {
