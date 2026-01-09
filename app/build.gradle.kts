@@ -26,14 +26,16 @@ dependencies {
     annotationProcessor("com.google.dagger:dagger-compiler:2.57.2")
     androidTestImplementation("androidx.test:rules:1.7.0")
     androidTestImplementation("androidx.annotation:annotation:1.2.0")
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 }
 
 android {
     val ndkVersionShared = rootProject.extra.get("ndkVersionShared")
     // Changes to these values need to be reflected in `../docker/Dockerfile`
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
     ndkVersion = "${ndkVersionShared}"
+    compileSdk = 35
+    buildToolsVersion = "35.0.0"
 
     buildFeatures {
         dataBinding = true
@@ -44,7 +46,7 @@ android {
         applicationId = "com.nutomic.syncthingandroid"
         minSdk = 21
         targetSdk = 33
-        versionCode = 4400
+        versionCode = 4401
         versionName = "2.0.13"
         testApplicationId = "com.nutomic.syncthingandroid.test"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -81,11 +83,8 @@ android {
 
     // Otherwise libsyncthing.so doesn't appear where it should in installs
     // based on app bundles, and thus nothing works.
-    packagingOptions {
-        jniLibs {
-            useLegacyPackaging = true
-        }
-    }
+    packaging.jniLibs.useLegacyPackaging = true
+    namespace = "com.nutomic.syncthingandroid"
 }
 
 /**
