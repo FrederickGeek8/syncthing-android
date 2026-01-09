@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -17,8 +19,9 @@
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
     <!-- ACCESS_COARSE_LOCATION is required to get WiFi's SSID on 8.1 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- FOREGROUND_SERVICE is required to create a foreground service on 9 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <!-- FOREGROUND_SERVICE is required since Android 9 SDK 28 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <!-- ACCESS_FINE_LOCATION is required to get WiFi's SSID on 10 "Q" -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- ACCESS_BACKGROUND_LOCATION is required to get WiFi's SSID on 10 "Q" -->
@@ -27,6 +30,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- MANAGE_EXTERNAL_STORAGE is required on Android 11 "R" -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <!-- CHANGE_WIFI_MULTICAST_STATE is required for local discovery to work on Android 11 "R" -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
 
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
@@ -41,6 +46,8 @@
         android:supportsRtl="true"
         android:installLocation="internalOnly"
         android:requestLegacyExternalStorage="true"
+        android:preserveLegacyExternalStorage="true"
+        android:hasFragileUserData="true"
         android:name=".SyncthingApp">
         <activity
                 android:name=".activities.FirstStartActivity"
@@ -125,7 +132,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        <service android:name=".service.SyncthingService" />
+        <service
+            android:name=".service.SyncthingService"
+            android:foregroundServiceType="specialUse">
+          <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Syncthing is a continuous file sync app. If the user explicitly enables it running permanently in the background, it needs to monitor file changes at every time and receive or send changes made on the device or connected devices."/>
+        </service>
         <receiver android:name=".receiver.BootReceiver"
             android:exported="false">
             <intent-filter>
