@@ -22,8 +22,8 @@ dependencies {
     implementation("com.google.zxing:core:3.4.1")
 
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("com.google.dagger:dagger:2.57.2")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.57.2")
+    implementation("com.google.dagger:dagger:2.59.1")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.59.1")
     androidTestImplementation("androidx.test:rules:1.7.0")
     androidTestImplementation("androidx.annotation:annotation:1.2.0")
 
