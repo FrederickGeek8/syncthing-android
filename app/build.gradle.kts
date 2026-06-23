@@ -11,7 +11,7 @@ dependencies {
         exclude(group = "com.google.errorprone", module = "error_prone_annotations")
     }
     implementation("org.mindrot:jbcrypt:0.4")
-    implementation("com.google.guava:guava:32.1.3-android")
+    implementation("com.google.guava:guava:33.5.0-android")
     implementation("com.annimon:stream:1.2.2")
     implementation("com.android.volley:volley:1.2.1")
     implementation("commons-io:commons-io:2.11.0")
