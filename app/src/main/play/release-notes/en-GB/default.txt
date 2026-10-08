@@ -1,1 +1,1 @@
-* Update Syncthing to v2.1.1: https://github.com/syncthing/syncthing/releases/tag/v2.1.1
+* Update Syncthing to v2.1.6: https://github.com/syncthing/syncthing/releases/tag/v2.1.6
